@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home"
+    android:id="@+id/fragment_container">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:paddingStart="20dp"
+           android:paddingLeft="20dp"
+           android:paddingTop="20dp"
+           android:paddingEnd="20dp"
+           android:paddingRight="20dp"
+           android:paddingBottom="10dp">
+
+           <ImageButton
+               android:id="@+id/profileHomeBtn"
+               android:layout_width="25dp"
+               android:layout_height="25dp"
+               android:background="#FFFFFF"
+               android:src="@drawable/profile24dp" />
+
+
+           <ImageButton
+               android:id="@+id/notifyHome"
+               android:layout_width="25dp"
+               android:layout_height="25dp"
+               android:layout_alignParentRight="true"
+               android:background="#FFFFFF"
+               android:src="@drawable/ic_baseline_notifications_none_24" />
+
+       </RelativeLayout>
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+           <EditText
+               android:id="@+id/searchhome"
+               android:layout_width="match_parent"
+               android:layout_height="50dp"
+               android:layout_marginStart="20px"
+               android:layout_marginEnd="20px"
+               android:background="@drawable/round_corner"
+               android:drawableStart="@drawable/ic_baseline_search_24"
+               android:ems="10"
+               android:hint="Search secure spot..."
+               android:inputType="textPersonName"
+               android:padding="16dp"
+               android:paddingStart="16dp" />
+       </RelativeLayout>
+
+   </LinearLayout>
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottomnavmenu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

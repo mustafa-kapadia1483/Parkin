@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="600dp"
+    android:background="@drawable/round_corner"
+    android:padding="20dp">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ADD VEHICLE" />
+
+    <EditText
+        android:id="@+id/regNo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="15dp"
+        android:hint="Vehicle Registration no" />
+
+    <EditText
+        android:id="@+id/vhType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/regNo"
+        android:layout_marginTop="15dp"
+        android:hint="Vehicle Type" />
+
+    <EditText
+        android:id="@+id/model"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/vhType"
+        android:layout_marginTop="15dp"
+        android:hint="Vehicle Model" />
+    <EditText
+        android:id="@+id/vhColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/model"
+        android:layout_marginTop="15dp"
+        android:hint="Vehicle Color" />
+
+    <Button
+        android:id="@+id/addBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/vhColor"
+        android:layout_marginTop="40dp"
+        android:text="ADD"/>
+
+    <Button
+        android:id="@+id/cancelBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addBtn"
+        android:layout_marginTop="15dp"
+        android:text="Cancel"/>
+
+
+
+</RelativeLayout>
