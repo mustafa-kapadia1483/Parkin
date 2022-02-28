@@ -129,9 +129,9 @@ tools:context=".BookNext">
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/gentxt3"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="7dp"
                 android:layout_marginTop="-8dp"
-                android:text="08:00 PM"
+                android:text="08:00"
                 android:textColor="@color/black"
                 android:textSize="18dp" />
 
@@ -362,11 +362,12 @@ tools:context=".BookNext">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="183dp"
+            android:layout_marginLeft="188dp"
             android:text="@string/Rs"
             android:textSize="14dp" />
 
         <TextView
+            android:id="@+id/amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
@@ -400,10 +401,11 @@ tools:context=".BookNext">
             android:textSize="14dp" />
 
         <TextView
+            android:id="@+id/discountAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
-            android:text="50"
+            android:text="00"
             android:textColor="#E91E63"
             android:textSize="14dp" />
     </LinearLayout>
@@ -433,7 +435,7 @@ tools:context=".BookNext">
         android:id="@+id/finalAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="27dp"
+        android:layout_marginLeft="28dp"
         android:text="50"
         android:textColor="@color/teal_700"
         android:textSize="16dp"

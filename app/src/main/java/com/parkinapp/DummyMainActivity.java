@@ -4,10 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -15,6 +19,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,17 +29,24 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.razorpay.Checkout;
+import com.razorpay.PaymentResultListener;
+
+import org.json.JSONObject;
 
 import java.util.Calendar;
+import java.util.Locale;
 
-public class DummyMainActivity extends AppCompatActivity {
+public class DummyMainActivity extends AppCompatActivity implements PaymentResultListener {
     int minteger = 1;
-    TextView parkName, parkAddress, edDate, edTime, noHours, finalAmount, selectPay, vhRegNo;
+    TextView parkName, parkAddress, edDate, edTime, noHours, finalAmount, selectPay, vhRegNo, amount;
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
     private DatePickerDialog datePickerDialog;
     RelativeLayout dateLayout;
     TextView dategiven;
+    String tamount, paidAmount;
+    int hour, minute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +58,7 @@ public class DummyMainActivity extends AppCompatActivity {
 
         parkName = findViewById(R.id.parkName);
         parkAddress = findViewById(R.id.parkAddress);
+        TextView discountAmount = findViewById(R.id.discountAmount);
 
         Intent intent = getIntent();
 
@@ -85,30 +98,52 @@ public class DummyMainActivity extends AppCompatActivity {
         selectPay = (TextView) findViewById(R.id.selectPay);
         vhRegNo = (TextView) findViewById(R.id.vhRegNo);
 
+        //TIMEPICKER******************************************
+        edTime = findViewById(R.id.time);
 
+        RelativeLayout popTimePicker = (RelativeLayout) findViewById(R.id.timeLayout);
+        popTimePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+
+                        hour = selectedHour;
+                        minute = selectedMinute;
+                        edTime.setText(String.format(Locale.getDefault(), "%02d:%02d",hour,minute));
+                    }
+                };
+
+                int style = AlertDialog.THEME_HOLO_LIGHT;
+
+                TimePickerDialog timePickerDialog = new TimePickerDialog(DummyMainActivity.this, style, onTimeSetListener, hour, minute, true);
+                timePickerDialog.setTitle("Select Time");
+                timePickerDialog.show();
+            }
+        });
+
+        //TIMEPICKER******************************************
+
+        //PROMO CLICK******************
+
+        RelativeLayout promo = (RelativeLayout) findViewById(R.id.Promo);
+        promo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                discountAmount.setText("50");
+                paidAmount = String.valueOf(Integer.parseInt(amount.getText().toString()) - Integer.parseInt(discountAmount.getText().toString()));
+                finalAmount =findViewById(R.id.finalAmount);
+                finalAmount.setText(paidAmount);
+            }
+        });
+
+
+        //PAYMENT CLICK************************
         selectPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bookings bookings=new Bookings();
-                bookings.setParkName(parkName.getText().toString());
-                bookings.setVhRegNo(vhRegNo.getText().toString());
-                bookings.setStartTime(edTime.getText().toString());
-                bookings.setEndTime(edTime.getText().toString());
-                bookings.setNoHours(noHours.getText().toString());
-                bookings.setGivenDate(edDate.getText().toString());
-
-                databaseReference=firebaseDatabase.getReference("Bookings").child(vhRegNo.getText().toString());
-                databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        databaseReference.setValue(bookings);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
+                startPayment();
             }
         });
 
@@ -123,13 +158,6 @@ public class DummyMainActivity extends AppCompatActivity {
             }
         });
 
-        RelativeLayout timeLayout = (RelativeLayout) findViewById(R.id.timeLayout);
-        timeLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(DummyMainActivity.this, "Set Time", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         RelativeLayout dateLayout = (RelativeLayout) findViewById(R.id.dateLayout);
         dateLayout.setOnClickListener(new View.OnClickListener() {
@@ -147,7 +175,45 @@ public class DummyMainActivity extends AppCompatActivity {
             }
         });
 
+
+
+        amount = findViewById(R.id.amount);
+        amount.setText(str3);
+        parkName.setText(str);
+        parkAddress.setText(str2);
+
+        noHours = findViewById(R.id.noHours);
+        noHours.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String finalnoh= noHours.getText().toString();
+                tamount=  String.valueOf(Integer.parseInt(finalnoh) * Integer.parseInt(str3));
+
+                amount.setText(tamount);
+                paidAmount = String.valueOf(Integer.parseInt(tamount) - Integer.parseInt(discountAmount.getText().toString()));
+                finalAmount =findViewById(R.id.finalAmount);
+                finalAmount.setText(paidAmount);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
+        paidAmount = String.valueOf(Integer.parseInt(amount.getText().toString()) - Integer.parseInt(discountAmount.getText().toString()));
+        finalAmount =findViewById(R.id.finalAmount);
+        finalAmount.setText(paidAmount);
+
     }
+
+
     //Date>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     private String getTodaysDate() {
@@ -238,5 +304,79 @@ public class DummyMainActivity extends AppCompatActivity {
                 R.id.noHours);
         displayInteger.setText("" + number);
     }
+
+
+    //RAZOR PAY
+    public void startPayment() {
+
+        String Payable = String.valueOf(Integer.parseInt(finalAmount.getText().toString()) * 100);
+        String contact = "9082913251";
+
+        Checkout checkout = new Checkout();
+
+        checkout.setImage(R.mipmap.ic_launcher);
+
+        final Activity activity = this;
+
+        try {
+            JSONObject options = new JSONObject();
+            options.put("name", R.string.app_name);
+            options.put("description", "Payment for Anything");
+            options.put("send_sms_hash", true);
+            options.put("allow_rotation", false);
+
+            //You can omit the image option to fetch the image from dashboard
+            options.put("currency", "INR");
+            options.put("amount", Payable);
+
+            JSONObject preFill = new JSONObject();
+            preFill.put("email", "");
+            preFill.put("contact", contact);
+
+            options.put("prefill", preFill);
+
+            checkout.open(activity, options);
+        } catch (Exception e) {
+            Toast.makeText(activity, "Error in payment: " + e.getMessage(), Toast.LENGTH_SHORT)
+                    .show();
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void onPaymentSuccess(String s) {
+
+        Bookings bookings=new Bookings();
+        bookings.setParkName(parkName.getText().toString());
+        bookings.setVhRegNo(vhRegNo.getText().toString());
+        bookings.setStartTime(edTime.getText().toString());
+        bookings.setEndTime(edTime.getText().toString());
+        bookings.setNoHours(noHours.getText().toString());
+        bookings.setGivenDate(edDate.getText().toString());
+        bookings.setStatus("Booked");
+
+        databaseReference=firebaseDatabase.getReference("9082913251").child(vhRegNo.getText().toString());
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                databaseReference.setValue(bookings);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        Intent a = new Intent(this, History.class);
+        startActivity(a);
+    }
+
+    @Override
+    public void onPaymentError(int i, String s) {
+
+        Toast.makeText(this, "Payment Failed" +s, Toast.LENGTH_SHORT).show();
+    }
+//RAZOR PAY
 
 }

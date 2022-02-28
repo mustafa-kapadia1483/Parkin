@@ -330,11 +330,11 @@ public class Explore extends AppCompatActivity implements OnMapReadyCallback, ad
 
 
         ArrayList<phonehelper> phonelocations = new ArrayList<>();
-        phonelocations.add(new phonehelper(gradient1, R.drawable.common_full_open_on_phone, "VSIT college", "30/hr", "Charging Unavailable",getText(R.string.vsit).toString()));
-        phonelocations.add(new phonehelper(gradient4, R.drawable.common_full_open_on_phone, "Matunga Station Parking", "40/hr", "Charging Unavailable", getText(R.string.matunga).toString()));
-        phonelocations.add(new phonehelper(gradient2, R.drawable.common_full_open_on_phone, "Kohinoor Square", "30/hr", "Charging Available", getText(R.string.kohinoor).toString()));
-        phonelocations.add(new phonehelper(gradient4, R.drawable.common_full_open_on_phone, "Sion Hospital","50/hr", "Charging Available", getText(R.string.sion).toString()));
-        phonelocations.add(new phonehelper(gradient2, R.drawable.common_full_open_on_phone, "Mcgm Parking Sewri", "35/hr", "Charging Available" , getText(R.string.mcgm).toString()));
+        phonelocations.add(new phonehelper(gradient1, R.drawable.common_full_open_on_phone, "VSIT college", "30", "Charging Unavailable",getText(R.string.vsit).toString()));
+        phonelocations.add(new phonehelper(gradient4, R.drawable.common_full_open_on_phone, "Matunga Station Parking", "40", "Charging Unavailable", getText(R.string.matunga).toString()));
+        phonelocations.add(new phonehelper(gradient2, R.drawable.common_full_open_on_phone, "Kohinoor Square", "30", "Charging Available", getText(R.string.kohinoor).toString()));
+        phonelocations.add(new phonehelper(gradient4, R.drawable.common_full_open_on_phone, "Sion Hospital","50", "Charging Available", getText(R.string.sion).toString()));
+        phonelocations.add(new phonehelper(gradient2, R.drawable.common_full_open_on_phone, "Mcgm Parking Sewri", "35", "Charging Available" , getText(R.string.mcgm).toString()));
 
 
         adapter = new adapterphone(phonelocations, this);
