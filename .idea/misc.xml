@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Projects/Parkin/app/src/main/res/font/poppins_bold.xml" value="0.14010416666666667" />
+        <entry key="..\:/Android Projects/Parkin/app/src/main/res/layout/activity_home.xml" value="0.10989583333333333" />
+        <entry key="..\:/Android Projects/Parkin/app/src/main/res/layout/activity_profile.xml" value="0.1" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/add_circle.xml" value="0.202734375" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/bottomsheet.xml" value="0.13819444444444445" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/btnbackground.xml" value="0.202734375" />
