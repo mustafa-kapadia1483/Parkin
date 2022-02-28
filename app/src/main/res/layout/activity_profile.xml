@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="10dp">
 
-        <TextView
+        <EditText
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,10 +23,11 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="30dp"
-            android:text="Umesh Lodha"
             android:textColor="@color/black"
+            android:minWidth="225dp"
             android:textSize="30dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:focusable="false"/>
 
 
         <TextView
@@ -41,7 +42,7 @@
             android:textSize="20dp" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/editProfile"
+            android:id="@+id/editProfileBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -50,8 +51,8 @@
             android:drawableLeft="@drawable/ic_pencil"
             android:drawablePadding="-45dp"
             android:paddingRight="-20dp"
-            android:text="Edit"
             android:textColor="#E91E63"
+            android:text="@string/edit"
             android:textSize="17dp" />
 
     </RelativeLayout>
