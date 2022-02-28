@@ -6,6 +6,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -107,10 +108,23 @@ public class Explore extends AppCompatActivity implements OnMapReadyCallback, ad
     RecyclerView.Adapter adapter;
 
 
+    LatLng VSIT = new LatLng(19.0213822,72.8707494);
+    LatLng SionHospital = new LatLng(19.0238592,72.8825719);
+    LatLng MatungaStation = new LatLng(19.03086695630095, 72.8512965672522);
+    LatLng KohinoorSquare = new LatLng(19.024923,72.839316);
+    LatLng Chembur = new LatLng(19.055887184156767, 72.88338121558216);
+    LatLng McgmParking = new LatLng(18.993082500000156, 72.84830980411726);
+
+
+    private ArrayList<LatLng> locationArrayList;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_explore);
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         checkMyPermission();
 
@@ -118,62 +132,79 @@ public class Explore extends AppCompatActivity implements OnMapReadyCallback, ad
 //Bottom card************************************************************************
 
 
+        locationArrayList = new ArrayList<>();
+
+        // on below line we are adding our
+        // locations in our array list.
+        locationArrayList.add(VSIT);
+        locationArrayList.add(SionHospital);
+        locationArrayList.add(MatungaStation);
+        locationArrayList.add(KohinoorSquare);
+        locationArrayList.add(Chembur);
+        locationArrayList.add(McgmParking);
+
 //ON open DAILOG************************************************************************
-        super.onStart();
 
-        final Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.dialog);
-        dialog.setCancelable(false);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.setTitle("Dialog box");
-        TextView txtView2;
-
-
-        Button button = (Button) dialog.findViewById(R.id.btnSelect);
-        button.setOnClickListener(new View.OnClickListener() {
+        TextView vehicle = (TextView) findViewById(R.id.vehicle1);
+        vehicle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TextView txtView = (TextView) findViewById(R.id.vehicle1);
-                txtView.setText("Car");
-                veh = "car";
-                dialog.dismiss();
+                final Dialog dialog = new Dialog(Explore.this);
+                dialog.setContentView(R.layout.dialog);
+                dialog.setCancelable(false);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.setTitle("Dialog box");
+                TextView txtView2;
+
+
+                Button button = (Button) dialog.findViewById(R.id.btnSelect);
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        TextView txtView = (TextView) findViewById(R.id.vehicle1);
+                        txtView.setText("Car");
+                        veh = "car";
+                        dialog.dismiss();
+                    }
+                });
+
+                Button button2 = (Button) dialog.findViewById(R.id.btnSelect2);
+                button2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        TextView txtView = (TextView) findViewById(R.id.vehicle1);
+                        txtView.setText("Bike");
+                        veh = "Bike";
+                        dialog.dismiss();
+                    }
+                });
+
+                Button button3 = (Button) dialog.findViewById(R.id.btnSelect3);
+                button3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        TextView txtView = (TextView) findViewById(R.id.vehicle1);
+                        txtView.setText("Ebike");
+                        veh = "Ebike";
+                        dialog.dismiss();
+                    }
+                });
+
+                Button button4 = (Button) dialog.findViewById(R.id.btnSelect4);
+                button4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        TextView txtView = (TextView) findViewById(R.id.vehicle1);
+                        txtView.setText("Ecar");
+                        veh = "Ecar";
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
             }
         });
 
-        Button button2 = (Button) dialog.findViewById(R.id.btnSelect2);
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TextView txtView = (TextView) findViewById(R.id.vehicle1);
-                txtView.setText("Bike");
-                veh = "Bike";
-                dialog.dismiss();
-            }
-        });
-
-        Button button3 = (Button) dialog.findViewById(R.id.btnSelect3);
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TextView txtView = (TextView) findViewById(R.id.vehicle1);
-                txtView.setText("Ebike");
-                veh = "Ebike";
-                dialog.dismiss();
-            }
-        });
-
-        Button button4 = (Button) dialog.findViewById(R.id.btnSelect4);
-        button4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TextView txtView = (TextView) findViewById(R.id.vehicle1);
-                txtView.setText("Ecar");
-                veh = "Ecar";
-                dialog.dismiss();
-            }
-        });
-
-        dialog.show();
 
 
         ImageButton current = (ImageButton) findViewById(R.id.currentLocation);
@@ -296,13 +327,14 @@ public class Explore extends AppCompatActivity implements OnMapReadyCallback, ad
         phoneRecycler2.setHasFixedSize(true);
         phoneRecycler2.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
-        ArrayList<phonehelper> phonelocations = new ArrayList<>();
-        phonelocations.add(new phonehelper(gradient1, R.drawable.common_full_open_on_phone, "Matunga Station"));
-        phonelocations.add(new phonehelper(gradient4, R.drawable.common_full_open_on_phone, "Wadala Station"));
-        phonelocations.add(new phonehelper(gradient2, R.drawable.common_full_open_on_phone, "Kohinoor"));
-        phonelocations.add(new phonehelper(gradient4, R.drawable.common_full_open_on_phone, "Plaza"));
 
-        phonelocations.add(new phonehelper(gradient2, R.drawable.common_full_open_on_phone, "Dadar TT"));
+
+        ArrayList<phonehelper> phonelocations = new ArrayList<>();
+        phonelocations.add(new phonehelper(gradient1, R.drawable.common_full_open_on_phone, "VSIT college", "30/hr", "Charging Unavailable",getText(R.string.vsit).toString()));
+        phonelocations.add(new phonehelper(gradient4, R.drawable.common_full_open_on_phone, "Matunga Station Parking", "40/hr", "Charging Unavailable", getText(R.string.matunga).toString()));
+        phonelocations.add(new phonehelper(gradient2, R.drawable.common_full_open_on_phone, "Kohinoor Square", "30/hr", "Charging Available", getText(R.string.kohinoor).toString()));
+        phonelocations.add(new phonehelper(gradient4, R.drawable.common_full_open_on_phone, "Sion Hospital","50/hr", "Charging Available", getText(R.string.sion).toString()));
+        phonelocations.add(new phonehelper(gradient2, R.drawable.common_full_open_on_phone, "Mcgm Parking Sewri", "35/hr", "Charging Available" , getText(R.string.mcgm).toString()));
 
 
         adapter = new adapterphone(phonelocations, this);
@@ -350,14 +382,20 @@ public class Explore extends AppCompatActivity implements OnMapReadyCallback, ad
                 MapStyleOptions.loadRawResourceStyle(this, R.raw.custommap)
         );
 
+        for (int i = 0; i < locationArrayList.size(); i++) {
+
+            // below line is use to add marker to each location of our array list.
+            mGoogleMap.addMarker(new MarkerOptions().position(locationArrayList.get(i)).icon(BitmapDescriptorFactory.fromResource(R.drawable.parkpin)));
+
+        }
 
         LatLng latLng = new LatLng(19.018950, 72.863543);
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.title("Me");
         markerOptions.position(latLng);
-        markerOptions.icon((BitmapDescriptorFactory.fromResource(R.drawable.user30loc)));
+        markerOptions.icon((BitmapDescriptorFactory.fromResource(R.drawable.target)));
         googleMap.addMarker(markerOptions);
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 15);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 13);
         googleMap.animateCamera(cameraUpdate);
     }
 

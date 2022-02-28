@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DummyMainActivity">
+
+    <ImageButton
+        android:id="@+id/btnBackk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:background="@null"
+        android:src="@drawable/ic_arrow_"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/parkName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Matunga Circle"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBackk" />
+
+    <LinearLayout
+        android:id="@+id/addressLay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/parkName">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_location" />
+
+        <TextView
+            android:id="@+id/parkAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:maxWidth="300dp"
+            android:text="Vidyalankar School Of Information Technology wadala East"
+            android:textColor="#000000"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/bookWindow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/datetimebox"
+        app:layout_constraintTop_toBottomOf="@+id/addressLay">
+        <TextView
+            android:id="@+id/gentxt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Booking Window"
+            android:layout_margin="10dp"/>
+
+        <LinearLayout
+            android:id="@+id/dateTimelay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gentxt1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/dateLayout"
+                android:layout_width="95dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/datetimebox">
+
+                <TextView
+                    android:id="@+id/gentxt2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Date"
+                    android:textColor="@color/quantum_grey500"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/gentxt2"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="-8dp"
+                    android:text="14 Feb"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/timeLayout"
+                android:layout_width="95dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/datetimebox">
+
+                <TextView
+                    android:id="@+id/gentxt3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Time"
+                    android:textColor="@color/quantum_grey500"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/gentxt3"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="-8dp"
+                    android:text="01:00 PM"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/nhours"
+                android:layout_width="110dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/dateTimelay"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/datetimebox">
+
+                <TextView
+                    android:id="@+id/gentxt4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="No. of hours"
+                    android:textColor="@color/quantum_grey500"
+                    android:textSize="12dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/gentxt4"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="-8dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/decrease"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-4dp"
+                        android:layout_marginRight="65dp"
+                        android:gravity="center"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:textColor="@color/teal_700"
+                        android:onClick="decreaseInteger"
+                        android:paddingTop="2dp"
+                        android:text="-" />
+
+                    <TextView
+                        android:id="@+id/integer_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-65dp"
+                        android:layout_marginTop="-3dp"
+                        android:layout_marginRight="5dp"
+                        android:text="1"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/increase"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-4dp"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:textColor="@color/teal_700"
+                        android:onClick="increaseInteger"
+                        android:paddingTop="2dp"
+                        android:text="+" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/vhSelection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dateTimelay"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/gentxt5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select a vehicle" />
+
+            <LinearLayout
+                android:id="@+id/addVh"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/gentxt5"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/datetimebox"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_addblue" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Add Vehicle"
+                    android:textColor="@color/teal_700" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/gentxt5"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:layout_toEndOf="@+id/addVh"
+                android:background="@drawable/selectedborder">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-8dp"
+                    android:src="@drawable/ecar" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/vhModel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="TATA Nexon EV"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/vhRegNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="MH01DU1234"
+                        android:textColor="@color/black" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/connector"
+                        android:layout_marginLeft="10dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CCS 2"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="-23dp"
+                        android:textColor="@color/black"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/extraEV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/vhSelection"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp">
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="45dp"
+                android:layout_marginTop="3dp"
+                android:text="Do you want to charge while parking?"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="45dp"
+                android:layout_marginTop="30dp"
+                android:text="Get estimated cost"
+                android:textColor="#2196F3" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/Promo"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/datetimebox"
+        android:gravity="left|center"
+        app:layout_constraintTop_toBottomOf="@+id/bookWindow">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/discount"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apply promo code"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="45dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="330dp"
+            android:src="@drawable/ic_arrowright" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/paymentlay"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/datetimebox"
+        app:layout_constraintTop_toBottomOf="@+id/Promo"
+        tools:layout_editor_absoluteX="20dp">
+
+        <TextView
+            android:id="@+id/gentxt6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Payment Details"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/chargesdisp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gentxt6"
+            android:layout_marginLeft="18dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/gentxt7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Parking Charges"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="183dp"
+                android:text="@string/Rs"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:text="100"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/discountdsip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/chargesdisp"
+            android:layout_marginLeft="18dp"
+
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/gentxt8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Promo discount"
+                android:textColor="#E91E63"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="190dp"
+                android:text="@string/Rsneg"
+                android:textColor="#E91E63"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:text="50"
+                android:textColor="#E91E63"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/payTotal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/selectedborder"
+        android:gravity="left|center"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="@string/Rs"
+            android:textColor="@color/teal_700"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/finalAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dp"
+            android:text="50"
+            android:textColor="@color/teal_700"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Total"
+            android:textColor="@color/teal_700"
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/selectPay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="180dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="Select payment method  >"
+            android:textColor="@color/teal_700"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

@@ -39,60 +39,38 @@
                 android:src="@drawable/ic_location" />
 
             <TextView
-                android:id="@+id/parkAddress"
+                android:id="@+id/phone_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:maxLines="2"
                 android:text="Vidyalankar School Of Information..."
                 android:textColor="#a3a3ab"
                 android:textSize="12sp" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/distLay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:layout_below="@+id/addressLay">
 
-            <ImageView
-                android:layout_width="16dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="-5dp"
-                android:src="@drawable/ic_car" />
-
-            <TextView
-                android:id="@+id/parkDistance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:layout_marginStart="5dp"
-                android:text="900m Away"
-                android:textStyle="bold"
-                android:textColor="#000000"
-                android:textSize="12sp" />
-        </LinearLayout>
 
         <TextView
             android:id="@+id/rupee"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/distLay"
-            android:layout_marginTop="3dp"
+            android:layout_below="@+id/addressLay"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
             android:textColor="@color/black"
             android:text="@string/Rs"/>
 
         <TextView
+            android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/distLay"
+            android:layout_below="@+id/addressLay"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="10dp"
             android:layout_toEndOf="@+id/rupee"
-            android:textColor="@color/black"
-            android:text="30/hr" />
+            android:text="30/hr"
+            android:textColor="@color/black" />
 
         <TextView
             android:layout_width="match_parent"
@@ -104,12 +82,13 @@
             android:textColor="#009688" />
 
         <TextView
+            android:id="@+id/chargaval"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Charging Available"
             android:layout_marginTop="95dp"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/teal_700"/>
+            android:textColor="#DF8B0E"/>
 
         <TextView
             android:id="@+id/slottxt"

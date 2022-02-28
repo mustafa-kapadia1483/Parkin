@@ -14,10 +14,32 @@
     <string name="desc_fourth">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="apiKey">AIzaSyBKtMhmjwUbRVprxEzkD3W-vBpZqS_ZdmI</string>
+    <string name="apiKey">AIzaSyB7R8jSWK6jdxoi_r7La1Tr9XWV13cgKC8</string>
     <string name="bottom_sheet_behavior">com.google.android.material.bottomsheet.BottomSheetBehavior</string>
 
     <string name="vehicle"></string>
     <string name="Rs">\u20B9</string>
     <string name="Rsneg">-\u20B9</string>
+
+
+    <string name="otp_verification">OTP Verification</string>
+    <string name="otp_verifcation_subtitle">We will send you an One Time Password on this mobile number</string>
+    <string name="enter_your_mobile_number_message">Enter your mobile number</string>
+    <string name="country_code">+91</string>
+    <string name="phone_input_hint">9999999999</string>
+    <string name="send_otp_btn_text">Send OTP</string>
+    <string name="enter_the_otp">Enter the OTP</string>
+    <string name="didn_t_receive_otp">Didn\'t receive OTP?</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="confirm_otp">Confirm OTP</string>
+    <string name="sign_out">sign out</string>
+
+
+    <string name="matunga">Lakhamsi Napoo Rd, Matunga, Mumbai, Maharashtra 400019</string>
+    <string name="sion">RB2 Central Railway Quarters, Jain Society, Sion, Mumbai, Maharashtra 400022</string>
+    <string name="kohinoor">N.C.Kelkar Marg, R.G. Gadkari Chowk, Shivaji Park, Dadar, W, Maharashtra 400028</string>
+    <string name="mcgm">Tokershi Jivraj Rd, Cotton Green Zakaria B, Abhyudaya Nagar, Parel, Mumbai, Maharashtra 400033</string>
+    <string name="vsit">Vidyalankar Educational Campus, Vidyalankar College Rd, Wadala East, Deen Bandhu Nagar, Antop Hill, Mumbai, Maharashtra 400037</string>
+
+
 </resources>

@@ -5,63 +5,74 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Home"
+    android:background="#dafbff"
     android:id="@+id/fragment_container">
 
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:orientation="vertical">
-
-       <RelativeLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:paddingStart="20dp"
-           android:paddingLeft="20dp"
-           android:paddingTop="20dp"
-           android:paddingEnd="20dp"
-           android:paddingRight="20dp"
-           android:paddingBottom="10dp">
-
-           <ImageButton
-               android:id="@+id/profileHomeBtn"
-               android:layout_width="25dp"
-               android:layout_height="25dp"
-               android:background="#FFFFFF"
-               android:src="@drawable/profile24dp" />
 
 
-           <ImageButton
-               android:id="@+id/notifyHome"
-               android:layout_width="25dp"
-               android:layout_height="25dp"
-               android:layout_alignParentRight="true"
-               android:background="#FFFFFF"
-               android:src="@drawable/ic_baseline_notifications_none_24" />
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/homewall"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-       </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingLeft="20dp"
+            android:paddingEnd="20dp"
+            android:paddingRight="20dp">
 
-       <RelativeLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content">
-
-           <EditText
-               android:id="@+id/searchhome"
-               android:layout_width="match_parent"
-               android:layout_height="50dp"
-               android:layout_marginStart="20px"
-               android:layout_marginEnd="20px"
-               android:background="@drawable/round_corner"
-               android:drawableStart="@drawable/ic_baseline_search_24"
-               android:ems="10"
-               android:hint="Search secure spot..."
-               android:inputType="textPersonName"
-               android:padding="16dp"
-               android:paddingStart="16dp" />
-       </RelativeLayout>
-
-   </LinearLayout>
+            <ImageButton
+                android:id="@+id/profileHomeBtn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:adjustViewBounds="true"
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/user" />
 
 
+            <ImageButton
+                android:id="@+id/notifyHome"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:adjustViewBounds="true"
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:layout_alignParentRight="true"
+
+                android:src="@drawable/notification" />
+
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/exploreMore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingRight="50dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:layout_marginBottom="30dp"
+        android:text="Explore more &#10140;"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:background="@drawable/round_corner"
+        android:paddingLeft="52dp"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"

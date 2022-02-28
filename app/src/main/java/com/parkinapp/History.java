@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -91,6 +92,7 @@ public class History extends AppCompatActivity {
 
             }
 
+
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
@@ -111,6 +113,14 @@ public class History extends AppCompatActivity {
 
             }
 
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent ticket = new Intent(History.this, showBooking.class);
+                startActivity(ticket);
+            }
         });
 
 

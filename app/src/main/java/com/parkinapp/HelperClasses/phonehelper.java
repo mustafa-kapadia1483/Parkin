@@ -6,12 +6,16 @@ import android.graphics.drawable.GradientDrawable;
 public class phonehelper {
 
     int image;
-    String title;
+    String title, price, charge;
+    String address;
     GradientDrawable color;
 
-    public phonehelper(GradientDrawable color, int image, String title) {
+    public phonehelper(GradientDrawable color, int image, String title, String price, String charge, String address) {
         this.image = image;
+        this.address = address;
         this.title = title;
+        this.price = price;
+        this.charge = charge;
         this.color = color;
     }
 
@@ -22,6 +26,18 @@ public class phonehelper {
     public String getTitle() {
         return title;
     }
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public String getCharge() {
+        return charge;
+    }
+
 
 
     public Drawable getgradient() {

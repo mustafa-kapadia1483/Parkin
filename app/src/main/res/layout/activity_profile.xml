@@ -6,6 +6,252 @@
     android:layout_height="match_parent"
     tools:context=".Profile">
 
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/round_corner"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="10dp">
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:text="Umesh Lodha"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/userPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/username"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="-20dp"
+            android:text="+91 9082913251"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/editProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/ic_pencil"
+            android:drawablePadding="-45dp"
+            android:paddingRight="-20dp"
+            android:text="Edit"
+            android:textColor="#E91E63"
+            android:textSize="17dp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/profOption1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="horizontal"
+        android:background="@drawable/round_corner"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
+        tools:layout_editor_absoluteX="10dp">
+
+        <ImageView
+            android:id="@+id/logo1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="20dp"
+            android:src="@drawable/vehicles" />
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="My Vehicles"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:scaleType="fitEnd"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_arrowright" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/profOption2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:background="@drawable/round_corner"
+        app:layout_constraintTop_toBottomOf="@+id/profOption1"
+        tools:layout_editor_absoluteX="10dp">
+
+        <ImageView
+            android:id="@+id/Logo2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="20dp"
+            android:src="@drawable/helpsupport" />
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Help and Support"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:scaleType="fitEnd"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_arrowright" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/profOption3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:background="@drawable/round_corner"
+        app:layout_constraintTop_toBottomOf="@+id/profOption2"
+        tools:layout_editor_absoluteX="10dp">
+
+        <ImageView
+            android:id="@+id/Logo3"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="20dp"
+            android:src="@drawable/discount" />
+
+        <TextView
+            android:id="@+id/text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Coupons"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:scaleType="fitEnd"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_arrowright" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/profOption4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:background="@drawable/round_corner"
+        app:layout_constraintTop_toBottomOf="@+id/profOption3"
+        tools:layout_editor_absoluteX="10dp">
+
+        <ImageView
+            android:id="@+id/Logo4"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="20dp"
+            android:src="@drawable/about" />
+
+        <TextView
+            android:id="@+id/text4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="About"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:scaleType="fitEnd"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_arrowright" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_corner"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        tools:layout_editor_absoluteX="10dp">
+
+        <TextView
+            android:id="@+id/text5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="5dp"
+            android:text="Logout"
+            android:textColor="#E91E63"
+            android:textSize="19dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/Logo5"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_exit" />
+
+    </LinearLayout>
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="0dp"

@@ -5,21 +5,32 @@
       <map>
         <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/add_circle.xml" value="0.202734375" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/bottomsheet.xml" value="0.13819444444444445" />
+        <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/btnbackground.xml" value="0.202734375" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/circleback.xml" value="0.202734375" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/circlebg.xml" value="0.1" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/datetimebox.xml" value="0.202734375" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/ic_arrow_.xml" value="0.202734375" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/ic_arrow_back.xml" value="0.202734375" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/ic_arrowright.xml" value="0.202734375" />
+        <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/ic_car.xml" value="0.14375" />
+        <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/ic_download.xml" value="0.16805555555555557" />
+        <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/ic_exit.xml" value="0.202734375" />
+        <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/ic_my_location.xml" value="0.20038610038610039" />
+        <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/ic_share.xml" value="0.16805555555555557" />
+        <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/offerbg.xml" value="0.20038610038610039" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/round_corner.xml" value="0.24166666666666667" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/selectedborder.xml" value="0.202734375" />
-        <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/activity_booknext.xml" value="0.264" />
+        <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/activity_booknext.xml" value="0.176" />
+        <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/activity_dummy_main.xml" value="0.190625" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/activity_explore.xml" value="0.2" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/activity_history.xml" value="0.2" />
-        <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/activity_home.xml" value="0.16" />
+        <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/activity_home.xml" value="0.2" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/activity_main.xml" value="0.152" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/activity_on_boarding.xml" value="0.25416666666666665" />
-        <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/activity_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/activity_profile.xml" value="0.176" />
+        <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/activity_send_otpactivity.xml" value="0.2" />
+        <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/activity_show_booking.xml" value="0.190625" />
+        <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/activity_verify_otpactivity.xml" value="0.190625" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/booking.xml" value="0.264" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/bottomlayout.xml" value="0.152" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/card.xml" value="0.190625" />
@@ -27,6 +38,7 @@
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/fragment_addvehicle.xml" value="0.144" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/fragment_blank.xml" value="0.1" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/fragment_book.xml" value="0.1" />
+        <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/fragment_booking_ticket.xml" value="0.16" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/fragment_history.xml" value="0.25416666666666665" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/fragment_home.xml" value="0.152" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
@@ -35,6 +47,7 @@
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/round_corner.xml" value="0.25416666666666665" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/sliderlayout.xml" value="0.25416666666666665" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/menu/bottomnavmenu.xml" value="0.1" />
+        <entry key="..\:/my docs/Parkin app/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.20038610038610039" />
       </map>
     </option>
   </component>

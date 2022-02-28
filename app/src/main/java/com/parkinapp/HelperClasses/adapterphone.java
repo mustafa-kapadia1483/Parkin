@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.parkinapp.BookNext;
+import com.parkinapp.DummyMainActivity;
 import com.parkinapp.Explore;
 import com.parkinapp.R;
 
@@ -45,6 +46,9 @@ public class adapterphone extends RecyclerView.Adapter<adapterphone.PhoneViewHol
         phonehelper phonehelper = phoneLocations.get(position);
         holder.image.setImageResource(phonehelper.getImage());
         holder.title.setText(phonehelper.getTitle());
+        holder.address.setText(phonehelper.getAddress());
+        holder.price.setText(phonehelper.getPrice());
+        holder.charge.setText(phonehelper.getCharge());
         holder.relativeLayout.setBackground(phonehelper.getgradient());
     }
 
@@ -62,7 +66,7 @@ public class adapterphone extends RecyclerView.Adapter<adapterphone.PhoneViewHol
 
 
         ImageView image;
-        TextView title;
+        TextView title, address, price, charge;
         RelativeLayout relativeLayout;
         Button book;
 
@@ -76,15 +80,37 @@ public class adapterphone extends RecyclerView.Adapter<adapterphone.PhoneViewHol
 
             image = itemView.findViewById(R.id.phone_image);
             title = itemView.findViewById(R.id.phone_title);
+            address = itemView.findViewById(R.id.phone_address);
+            price = itemView.findViewById(R.id.price);
+            charge = itemView.findViewById(R.id.chargaval);
             relativeLayout = itemView.findViewById(R.id.background_color);
 
             itemView.findViewById(R.id.book).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    TextView textView = itemView.findViewById(R.id.chargaval);
                     String str = title.getText().toString();
-                    Intent book = new Intent(context , BookNext.class);
-                    book.putExtra("message_key", str);
-                    context.startActivity(book);
+                    String str2 = address.getText().toString();
+                    String str3 = price.getText().toString();
+                    String str4 = charge.getText().toString();
+
+                    if(str4 == "Charging Available"){
+                        Intent book = new Intent(context , DummyMainActivity.class);
+                        book.putExtra("title", str);
+                        book.putExtra("address", str2);
+                        book.putExtra("price", str3);
+                        book.putExtra("charge", str4);
+                        context.startActivity(book);
+                    }else{
+                        Intent book = new Intent(context , BookNext.class);
+                        book.putExtra("title", str);
+                        book.putExtra("address", str2);
+                        book.putExtra("price", str3);
+                        book.putExtra("charge", str4);
+                        context.startActivity(book);
+                    }
+
                 }
             });
 

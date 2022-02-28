@@ -2,13 +2,20 @@ package com.parkinapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Profile extends AppCompatActivity {
 
@@ -16,6 +23,27 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+
+        String phoneNumber = fAuth.getCurrentUser().getPhoneNumber();
+        TextView textView = findViewById(R.id.userPhone);
+        textView.setText(phoneNumber);
+
+
+        final LinearLayout logout = findViewById(R.id.logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fAuth.signOut();
+                Intent intent = new Intent(Profile.this, SendOTPActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+//BOTTOM NAVBAR**********************************************************************************************************
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         MenuItem item = navigation.getMenu().findItem(R.id.nav_profile);
@@ -44,5 +72,8 @@ public class Profile extends AppCompatActivity {
                 return false;
             }
         });
+
     }
+
+
 }

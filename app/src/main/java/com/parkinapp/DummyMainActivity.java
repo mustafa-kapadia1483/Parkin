@@ -2,12 +2,14 @@ package com.parkinapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -15,6 +17,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,8 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 
-public class BookNext extends AppCompatActivity {
-
+public class DummyMainActivity extends AppCompatActivity {
     int minteger = 1;
     TextView parkName, parkAddress, edDate, edTime, noHours, finalAmount, selectPay, vhRegNo;
     DatabaseReference databaseReference;
@@ -36,8 +39,9 @@ public class BookNext extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_booknext);
+        setContentView(R.layout.activity_dummy_main);
 
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         //Getting Parking Name from cards on Explore ***********************************
 
         parkName = findViewById(R.id.parkName);
@@ -69,7 +73,7 @@ public class BookNext extends AppCompatActivity {
         dategiven.setText(getTodaysDate());
 
 
- //Firebase connection and data type casting********************************************
+        //Firebase connection and data type casting********************************************
         firebaseDatabase= FirebaseDatabase.getInstance("https://parkin-e5c4e-default-rtdb.firebaseio.com/");
 
         parkName = (TextView) findViewById(R.id.parkName);
@@ -93,7 +97,7 @@ public class BookNext extends AppCompatActivity {
                 bookings.setNoHours(noHours.getText().toString());
                 bookings.setGivenDate(edDate.getText().toString());
 
-                databaseReference=firebaseDatabase.getReference("9999999999").child(vhRegNo.getText().toString());
+                databaseReference=firebaseDatabase.getReference("Bookings").child(vhRegNo.getText().toString());
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -123,7 +127,7 @@ public class BookNext extends AppCompatActivity {
         timeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(BookNext.this, "Set Time", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DummyMainActivity.this, "Set Time", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -139,7 +143,7 @@ public class BookNext extends AppCompatActivity {
         addvh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(BookNext.this, ""+ minteger, Toast.LENGTH_SHORT).show();
+                Toast.makeText(DummyMainActivity.this, ""+ minteger, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -220,13 +224,13 @@ public class BookNext extends AppCompatActivity {
 
     public void increaseInteger(View view) {
         if(minteger<6){
-        minteger = minteger + 1;
-        display(minteger);}
+            minteger = minteger + 1;
+            display(minteger);}
 
     }public void decreaseInteger(View view) {
         if(minteger>=2){
-        minteger = minteger - 1;
-        display(minteger);}
+            minteger = minteger - 1;
+            display(minteger);}
     }
 
     private void display(int number) {
