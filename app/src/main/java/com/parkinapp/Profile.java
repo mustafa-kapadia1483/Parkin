@@ -61,7 +61,7 @@ public class Profile extends AppCompatActivity {
                 }
                 else{
                     mDatabase.child("users").child(phoneWithoutSuffix).setValue(userName.getText().toString());
-                    setUsernameField(phoneNumber, userName );
+                    setUsernameField(phoneNumber, userName);
                     editUsernameBtn.setText("Edit");
                     userName.setFocusable(false);
                     btnClickCount = 0;

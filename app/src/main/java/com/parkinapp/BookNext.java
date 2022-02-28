@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,6 +37,8 @@ import java.util.Locale;
 public class BookNext extends AppCompatActivity implements PaymentResultListener {
 
     int minteger = 1;
+    static int bookingCount = 0;
+
     TextView parkName, parkAddress, edDate, edTime, noHours, finalAmount, selectPay, vhRegNo;
     TextView amount;
     DatabaseReference databaseReference;
@@ -43,7 +46,7 @@ public class BookNext extends AppCompatActivity implements PaymentResultListener
     private DatePickerDialog datePickerDialog;
     RelativeLayout dateLayout;
     TextView dategiven;
-    String tamount, paidAmount;
+    String tamount, paidAmount, phoneNumber;
     int hour, minute;
 
     @Override
@@ -55,6 +58,10 @@ public class BookNext extends AppCompatActivity implements PaymentResultListener
 
         parkName = findViewById(R.id.parkName);
         parkAddress = findViewById(R.id.parkAddress);
+
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+        phoneNumber = fAuth.getCurrentUser().getPhoneNumber().substring(3,13);
+
 
         Intent intent = getIntent();
 
@@ -352,7 +359,18 @@ public class BookNext extends AppCompatActivity implements PaymentResultListener
         bookings.setGivenDate(edDate.getText().toString());
         bookings.setStatus("Booked");
 
-        databaseReference=firebaseDatabase.getReference("9082913251").child(vhRegNo.getText().toString());
+        databaseReference=firebaseDatabase.getReference("TestBookings").child(phoneNumber);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                bookingCount = (int) snapshot.getChildrenCount();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        databaseReference=firebaseDatabase.getReference("TestBookings").child(phoneNumber).child(phoneNumber+bookingCount).child(vhRegNo.getText().toString());
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
