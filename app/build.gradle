@@ -59,6 +59,7 @@ dependencies {
 // Allows to update the text of views at runtime without recreating the activity
     implementation 'dev.b3nedikt.reword:reword:4.0.1'
 
+    implementation('com.razorpay:checkout:1.6.15')
 
     implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.5.20'
 

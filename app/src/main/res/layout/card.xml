@@ -69,7 +69,16 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@+id/rupee"
-            android:text="30/hr"
+            android:text="30"
+            android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/priceend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addressLay"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/price"
+            android:text="/hr"
             android:textColor="@color/black" />
 
         <TextView
