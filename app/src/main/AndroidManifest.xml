@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Parkin">
         <activity
+            android:name=".EvChargingCost"
+            android:exported="false" />
+        <activity
             android:name=".MyVehicles"
             android:exported="false" />
         <activity
@@ -82,9 +85,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
-  //RAZOR PAY
-
         <meta-data
             android:name="com.razorpay.ApiKey"
             android:value="rzp_test_1MKEO2QbL38oJE" />
@@ -96,6 +96,7 @@
             android:theme="@style/CheckoutTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <data
                     android:host="rzp.io"
                     android:scheme="io.rzp" />

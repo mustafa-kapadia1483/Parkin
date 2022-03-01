@@ -219,6 +219,19 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/showEvChargeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="100dp"
+        android:text="@string/showEvChargeSheetBtnText"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_editor_absoluteX="100dp" />
+
     <LinearLayout
         android:id="@+id/logout"
         android:layout_width="match_parent"

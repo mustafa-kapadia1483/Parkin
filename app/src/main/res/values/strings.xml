@@ -41,6 +41,7 @@
     <string name="mcgm">Tokershi Jivraj Rd, Cotton Green Zakaria B, Abhyudaya Nagar, Parel, Mumbai, Maharashtra 400033</string>
     <string name="vsit">Vidyalankar Educational Campus, Vidyalankar College Rd, Wadala East, Deen Bandhu Nagar, Antop Hill, Mumbai, Maharashtra 400037</string>
     <string name="edit">Edit</string>
+    <string name="showEvChargeSheetBtnText">show ev charge sheet</string>
 
 
 </resources>

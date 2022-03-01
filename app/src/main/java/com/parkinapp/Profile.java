@@ -11,6 +11,7 @@ import android.text.Editable;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -45,6 +46,14 @@ public class Profile extends AppCompatActivity {
 
         EditText userName = findViewById(R.id.username);
         AppCompatButton editUsernameBtn = findViewById(R.id.editProfileBtn);
+
+        Button showEvChargeSheet = findViewById(R.id.showEvChargeButton);
+        showEvChargeSheet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Profile.this, EvChargingCost.class));
+            }
+        });
 
         String phoneWithoutSuffix = phoneNumber.substring(3,13);
 
