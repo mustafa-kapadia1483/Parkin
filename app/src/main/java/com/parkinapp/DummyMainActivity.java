@@ -7,17 +7,23 @@ import androidx.appcompat.app.AppCompatDelegate;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -39,13 +45,15 @@ import java.util.Locale;
 
 public class DummyMainActivity extends AppCompatActivity implements PaymentResultListener {
     int minteger = 1;
-    TextView parkName, parkAddress, edDate, edTime, noHours, finalAmount, selectPay, vhRegNo, amount;
+    TextView parkName, parkAddress, edDate, edTime, noHours, finalAmount, selectPay, vhRegNo, vhModel, type;
+    TextView amount;
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
     private DatePickerDialog datePickerDialog;
     RelativeLayout dateLayout;
+    static int bookingCount= 0;
     TextView dategiven;
-    String tamount, paidAmount;
+    String tamount, paidAmount, phoneNumber, name, transId;
     int hour, minute;
 
     @Override
@@ -58,6 +66,12 @@ public class DummyMainActivity extends AppCompatActivity implements PaymentResul
 
         parkName = findViewById(R.id.parkName);
         parkAddress = findViewById(R.id.parkAddress);
+        vhModel = findViewById(R.id.vhModel);
+        type = findViewById(R.id.chargeType);
+
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+        phoneNumber = fAuth.getCurrentUser().getPhoneNumber().substring(3,13);
+
         TextView discountAmount = findViewById(R.id.discountAmount);
 
         Intent intent = getIntent();
@@ -78,6 +92,59 @@ public class DummyMainActivity extends AppCompatActivity implements PaymentResul
 
 
 
+        //************************************************************
+        TextView getCost = findViewById(R.id.getCost);
+        getCost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Dialog dialog = new Dialog(DummyMainActivity.this);
+                dialog.setContentView(R.layout.extimatedialog);
+                dialog.setCancelable(false);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.setTitle("Dialog box");
+
+                String[] evChargingTypes = {"type1", "ChAdeMO", "type2", "CCS1/2"};
+
+
+                int[] evChargingCostPerHr = {7,11,15,22};
+
+                Spinner evChargingTypeSelect = dialog.findViewById(R.id.evChargingTypeSelect);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(DummyMainActivity.this, android.R.layout.simple_spinner_dropdown_item, evChargingTypes);
+                evChargingTypeSelect.setAdapter(adapter);
+
+                TextView evChargingTypeResult = findViewById(R.id.evChargingTypeResult);
+
+                Button check = dialog.findViewById(R.id.chekc);
+
+
+
+                evChargingTypeSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        String typer = evChargingTypes[i];
+                        Integer typeCost = evChargingCostPerHr[i];
+                        check.setOnClickListener(
+                                new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        evChargingTypeResult.setText("Charging Type Selected is: " + typer + ", \nThe estimated cost of charging will: Rs " + typeCost  * 5 + "/hr");
+                                    }
+                                }
+                        );
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
+
+
+                dialog.show();
+            }
+        });
+
 
 
         initDatePicker();
@@ -97,6 +164,8 @@ public class DummyMainActivity extends AppCompatActivity implements PaymentResul
         finalAmount = (TextView) findViewById(R.id.finalAmount);
         selectPay = (TextView) findViewById(R.id.selectPay);
         vhRegNo = (TextView) findViewById(R.id.vhRegNo);
+        type = (TextView) findViewById(R.id.chargeType);
+        name = "Charge While parking";
 
         //TIMEPICKER******************************************
         edTime = findViewById(R.id.time);
@@ -171,7 +240,7 @@ public class DummyMainActivity extends AppCompatActivity implements PaymentResul
         addvh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(DummyMainActivity.this, ""+ minteger, Toast.LENGTH_SHORT).show();
+                Toast.makeText(DummyMainActivity.this, "Already Added", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -212,6 +281,9 @@ public class DummyMainActivity extends AppCompatActivity implements PaymentResul
         finalAmount.setText(paidAmount);
 
     }
+
+
+
 
 
     //Date>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -310,7 +382,7 @@ public class DummyMainActivity extends AppCompatActivity implements PaymentResul
     public void startPayment() {
 
         String Payable = String.valueOf(Integer.parseInt(finalAmount.getText().toString()) * 100);
-        String contact = "9082913251";
+        String contact = phoneNumber;
 
         Checkout checkout = new Checkout();
 
@@ -351,12 +423,30 @@ public class DummyMainActivity extends AppCompatActivity implements PaymentResul
         bookings.setParkName(parkName.getText().toString());
         bookings.setVhRegNo(vhRegNo.getText().toString());
         bookings.setStartTime(edTime.getText().toString());
-        bookings.setEndTime(edTime.getText().toString());
         bookings.setNoHours(noHours.getText().toString());
         bookings.setGivenDate(edDate.getText().toString());
+        bookings.setFinalAmount(finalAmount.getText().toString());
+        bookings.setType(type.getText().toString());
+        bookings.setVhModel(vhModel.getText().toString());
+        bookings.setParkAdd(parkAddress.getText().toString());
+        bookings.setTransId(s);
+        bookings.setName("Charge While Parking");
         bookings.setStatus("Booked");
 
-        databaseReference=firebaseDatabase.getReference("9082913251").child(vhRegNo.getText().toString());
+
+
+        databaseReference=firebaseDatabase.getReference("TestBookings").child(phoneNumber);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                bookingCount = (int) snapshot.getChildrenCount() + 2;
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        databaseReference=firebaseDatabase.getReference(phoneNumber).child(s);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

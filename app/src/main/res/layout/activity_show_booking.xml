@@ -184,6 +184,15 @@
                 android:textSize="18dp" />
 
         </LinearLayout>
+        <TextView
+            android:id="@+id/chargeYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#4CAF50"
+            android:layout_marginLeft="22dp"
+            android:textSize="16dp"
+            android:text=""/>
+
     </LinearLayout>
 
     <RelativeLayout
@@ -197,11 +206,11 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <ImageView
-            android:layout_marginLeft="20dp"
             android:id="@+id/image1"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:src="@drawable/suv" />
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/car" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -226,8 +235,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="13dp"
                 android:text="MH01DU5192"
-                android:textSize="18dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -236,6 +245,7 @@
                 android:text="Name: Umesh Lodha" />
 
             <TextView
+                android:id="@+id/vhType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="13dp"
@@ -307,8 +317,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="50"
-            android:textSize="16dp"
             android:textColor="@color/black"
+            android:textSize="16dp"
             android:textStyle="bold" />
 
 

@@ -268,7 +268,7 @@ tools:context=".BookNext">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
 
@@ -287,6 +287,13 @@ tools:context=".BookNext">
                     android:layout_marginLeft="10dp"
                     android:text="MH02DW7868"
                     android:textColor="@color/black" />
+                <TextView
+                    android:id="@+id/vhType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Car"
+                     />
             </LinearLayout>
 
         </LinearLayout>

@@ -40,7 +40,7 @@ public class Splash extends AppCompatActivity {
                     finish();
 
                 }else{
-                    Intent i = new Intent(Splash.this,Home.class);
+                    Intent i = new Intent(Splash.this,Explore.class);
                     startActivity(i);
                     finish();
                 }

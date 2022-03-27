@@ -49,6 +49,10 @@ public class Profile extends AppCompatActivity {
         String phoneWithoutSuffix = phoneNumber.substring(3,13);
 
         setUsernameField(phoneWithoutSuffix, userName);
+        if(userName.getText().toString().isEmpty()) {
+            userName.requestFocus();
+            btnClickCount ++;
+        }
 
         editUsernameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +65,6 @@ public class Profile extends AppCompatActivity {
                 }
                 else{
                     mDatabase.child("users").child(phoneWithoutSuffix).setValue(userName.getText().toString());
-                    setUsernameField(phoneNumber, userName );
                     editUsernameBtn.setText("Edit");
                     userName.setFocusable(false);
                     btnClickCount = 0;
@@ -80,7 +83,7 @@ public class Profile extends AppCompatActivity {
             }
         });
 
-//BOTTOM NAVBAR**********************************************************************************************************
+//BOTTOM NAVBAR************************************
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         MenuItem item = navigation.getMenu().findItem(R.id.nav_profile);
@@ -117,7 +120,12 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (task.isSuccessful()) {
-                    String user = task.getResult().getValue().toString();
+                    String user;
+                    if(task.getResult().getValue() == null) {
+                        user ="";
+                    } else {
+                        user = task.getResult().getValue().toString();
+                    }
                     userName.setText(user);
                 }
             }
