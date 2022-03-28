@@ -3,12 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
         <entry key="..\:/Android Projects/Parkin/app/src/main/res/drawable/spinnerborder.xml" value="0.17407407407407408" />
         <entry key="..\:/Android Projects/Parkin/app/src/main/res/font/poppins_bold.xml" value="0.14010416666666667" />
         <entry key="..\:/Android Projects/Parkin/app/src/main/res/layout/activity_ev_chargin_cost.xml" value="0.1213768115942029" />
         <entry key="..\:/Android Projects/Parkin/app/src/main/res/layout/activity_ev_charging_cost.xml" value="0.22" />
         <entry key="..\:/Android Projects/Parkin/app/src/main/res/layout/activity_home.xml" value="0.10989583333333333" />
         <entry key="..\:/Android Projects/Parkin/app/src/main/res/layout/activity_profile.xml" value="0.33" />
+=======
+>>>>>>> dabe6fb5cb953ddebe1ef2e9d8f34d320fcfeed8
         <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/add_circle.xml" value="0.202734375" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/bottomsheet.xml" value="0.13819444444444445" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/btnbackground.xml" value="0.202734375" />
@@ -26,6 +29,7 @@
         <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/offerbg.xml" value="0.20038610038610039" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/round_corner.xml" value="0.24166666666666667" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/selectedborder.xml" value="0.202734375" />
+        <entry key="..\:/my docs/Parkin app/app/src/main/res/drawable/spinnerborder.xml" value="0.202734375" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/activity_booknext.xml" value="0.176" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/activity_dummy_main.xml" value="0.190625" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/activity_explore.xml" value="0.2" />
@@ -42,6 +46,7 @@
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/bottomlayout.xml" value="0.152" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/card.xml" value="0.190625" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/dialog.xml" value="0.205607476635514" />
+        <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/extimatedialog.xml" value="0.190625" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/fragment_addvehicle.xml" value="0.144" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/fragment_blank.xml" value="0.1" />
         <entry key="..\:/my docs/Parkin app/app/src/main/res/layout/fragment_book.xml" value="0.1" />

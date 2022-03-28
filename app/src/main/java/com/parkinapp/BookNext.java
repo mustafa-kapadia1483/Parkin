@@ -8,7 +8,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -22,7 +25,10 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+<<<<<<< HEAD
 import com.google.firebase.database.ChildEventListener;
+=======
+>>>>>>> dabe6fb5cb953ddebe1ef2e9d8f34d320fcfeed8
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,16 +45,25 @@ import java.util.Locale;
 public class BookNext extends AppCompatActivity implements PaymentResultListener {
 
     int minteger = 1;
+<<<<<<< HEAD
     static int bookingCount = 0;
 
     TextView parkName, parkAddress, edDate, edTime, noHours, finalAmount, selectPay, vhRegNo;
+=======
+    TextView parkName, parkAddress, edDate, edTime, noHours, finalAmount, selectPay, vhRegNo, vhModel, type;
+>>>>>>> dabe6fb5cb953ddebe1ef2e9d8f34d320fcfeed8
     TextView amount;
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
     private DatePickerDialog datePickerDialog;
     RelativeLayout dateLayout;
+    static int bookingCount= 0;
     TextView dategiven;
+<<<<<<< HEAD
     String tamount, paidAmount, phoneNumber;
+=======
+    String tamount, paidAmount, phoneNumber, name, transId;
+>>>>>>> dabe6fb5cb953ddebe1ef2e9d8f34d320fcfeed8
     int hour, minute;
 
     @Override
@@ -60,6 +75,14 @@ public class BookNext extends AppCompatActivity implements PaymentResultListener
 
         parkName = findViewById(R.id.parkName);
         parkAddress = findViewById(R.id.parkAddress);
+        vhModel = findViewById(R.id.vhModel);
+        type = findViewById(R.id.vhType);
+
+
+
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+        phoneNumber = fAuth.getCurrentUser().getPhoneNumber().substring(3,13);
+
 
         FirebaseAuth fAuth = FirebaseAuth.getInstance();
         phoneNumber = fAuth.getCurrentUser().getPhoneNumber().substring(3,13);
@@ -131,6 +154,7 @@ public class BookNext extends AppCompatActivity implements PaymentResultListener
         finalAmount = (TextView) findViewById(R.id.finalAmount);
         selectPay = (TextView) findViewById(R.id.selectPay);
         vhRegNo = (TextView) findViewById(R.id.vhRegNo);
+        type = (TextView) findViewById(R.id.vhType);
 
  //PROMO CLICK******************
 
@@ -211,7 +235,7 @@ public class BookNext extends AppCompatActivity implements PaymentResultListener
         addvh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(BookNext.this, ""+ minteger, Toast.LENGTH_SHORT).show();
+                Toast.makeText(BookNext.this, "Already Added", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -315,7 +339,7 @@ public class BookNext extends AppCompatActivity implements PaymentResultListener
     public void startPayment() {
 
         String Payable = String.valueOf(Integer.parseInt(finalAmount.getText().toString()) * 100);
-        String contact = "9082913251";
+        String contact = phoneNumber;
 
                 Checkout checkout = new Checkout();
 
@@ -356,11 +380,16 @@ public class BookNext extends AppCompatActivity implements PaymentResultListener
         bookings.setParkName(parkName.getText().toString());
         bookings.setVhRegNo(vhRegNo.getText().toString());
         bookings.setStartTime(edTime.getText().toString());
-        bookings.setEndTime(edTime.getText().toString());
         bookings.setNoHours(noHours.getText().toString());
         bookings.setGivenDate(edDate.getText().toString());
+        bookings.setFinalAmount(finalAmount.getText().toString());
+        bookings.setType(type.getText().toString());
+        bookings.setVhModel(vhModel.getText().toString());
+        bookings.setParkAdd(parkAddress.getText().toString());
+        bookings.setTransId(s);
         bookings.setStatus("Booked");
 
+<<<<<<< HEAD
         databaseReference=firebaseDatabase.getReference("TestBookings").child(phoneNumber);
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
@@ -383,12 +412,26 @@ public class BookNext extends AppCompatActivity implements PaymentResultListener
 
             }
 
+=======
+
+
+        databaseReference=firebaseDatabase.getReference("TestBookings").child(phoneNumber);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                bookingCount = (int) snapshot.getChildrenCount() + 2;
+            }
+>>>>>>> dabe6fb5cb953ddebe1ef2e9d8f34d320fcfeed8
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+<<<<<<< HEAD
         databaseReference=firebaseDatabase.getReference("TestBookings").child(phoneNumber).child(phoneNumber+bookingCount).child(vhRegNo.getText().toString());
+=======
+        databaseReference=firebaseDatabase.getReference(phoneNumber).child(s);
+>>>>>>> dabe6fb5cb953ddebe1ef2e9d8f34d320fcfeed8
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

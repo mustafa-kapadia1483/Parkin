@@ -184,6 +184,18 @@
                 android:textSize="18dp" />
 
         </LinearLayout>
+<<<<<<< HEAD
+=======
+        <TextView
+            android:id="@+id/chargeYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#4CAF50"
+            android:layout_marginLeft="22dp"
+            android:textSize="16dp"
+            android:text=""/>
+
+>>>>>>> dabe6fb5cb953ddebe1ef2e9d8f34d320fcfeed8
     </LinearLayout>
 
     <RelativeLayout
@@ -197,11 +209,19 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <ImageView
+<<<<<<< HEAD
             android:layout_marginLeft="20dp"
             android:id="@+id/image1"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:src="@drawable/suv" />
+=======
+            android:id="@+id/image1"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/car" />
+>>>>>>> dabe6fb5cb953ddebe1ef2e9d8f34d320fcfeed8
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -226,8 +246,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="13dp"
                 android:text="MH01DU5192"
+<<<<<<< HEAD
                 android:textSize="18dp"
                 android:textColor="@color/black" />
+=======
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+>>>>>>> dabe6fb5cb953ddebe1ef2e9d8f34d320fcfeed8
 
             <TextView
                 android:layout_width="wrap_content"
@@ -236,6 +261,10 @@
                 android:text="Name: Umesh Lodha" />
 
             <TextView
+<<<<<<< HEAD
+=======
+                android:id="@+id/vhType"
+>>>>>>> dabe6fb5cb953ddebe1ef2e9d8f34d320fcfeed8
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="13dp"
@@ -307,8 +336,13 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="50"
+<<<<<<< HEAD
             android:textSize="16dp"
             android:textColor="@color/black"
+=======
+            android:textColor="@color/black"
+            android:textSize="16dp"
+>>>>>>> dabe6fb5cb953ddebe1ef2e9d8f34d320fcfeed8
             android:textStyle="bold" />
 
 

@@ -92,7 +92,7 @@ public class Profile extends AppCompatActivity {
             }
         });
 
-//BOTTOM NAVBAR**********************************************************************************************************
+//BOTTOM NAVBAR************************************
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         MenuItem item = navigation.getMenu().findItem(R.id.nav_profile);

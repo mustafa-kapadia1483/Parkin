@@ -2,14 +2,62 @@ package com.parkinapp;
 
 public class Bookings {
 
-    String parkName,startTime,endTime,givenDate,noHours,vhRegNo, status;
+    String parkName,startTime,endTime,givenDate,noHours,vhRegNo, status, vhModel, type, finalAmount, parkAdd, transId, name;
 
     public String getStatus() {
         return status;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getParkAdd() {
+        return parkAdd;
+    }
+
+    public String getTransId() {
+        return transId;
+    }
+
+    public void setTransId(String transId) {
+        this.transId = transId;
+    }
+
+    public void setParkAdd(String parkAdd) {
+        this.parkAdd = parkAdd;
+    }
+
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getVhModel() {
+        return vhModel;
+    }
+
+    public void setVhModel(String vhModel) {
+        this.vhModel = vhModel;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getFinalAmount() {
+        return finalAmount;
+    }
+
+    public void setFinalAmount(String finalAmount) {
+        this.finalAmount = finalAmount;
     }
 
     public String getParkName() {

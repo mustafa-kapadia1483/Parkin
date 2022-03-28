@@ -296,6 +296,7 @@
                         android:layout_marginLeft="10dp"
                         />
                     <TextView
+                        android:id="@+id/chargeType"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="CCS 2"
@@ -332,6 +333,7 @@
                 android:textColor="@color/black" />
 
             <TextView
+                android:id="@+id/getCost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="45dp"

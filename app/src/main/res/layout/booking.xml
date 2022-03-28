@@ -64,51 +64,51 @@
             android:layout_below="@+id/line1">
 
             <TextView
-                android:id="@+id/startTime"
+                android:id="@+id/startTimetxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="12:00"
-                android:textColor="@color/black"
-                android:textSize="16dp" />
+                android:text="Time:"
+                android:textSize="14dp" />
 
             <TextView
-                android:id="@+id/arrLeft"
+                android:id="@+id/startTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text="&#8592;"
                 android:gravity="center"
-                android:layout_marginTop="-3dp"
-                android:textSize="16dp" />
+                android:textColor="@color/black"
+                android:text="12:00"
+                android:textSize="14dp" />
 
+            <TextView
+                android:id="@+id/brac1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:text="("
+                android:textSize="14dp" />
             <TextView
                 android:id="@+id/noHours"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:textColor="@color/black"
                 android:text="2hrs"
-                android:gravity="center"
-                android:textSize="12dp" />
-
+                android:textSize="14dp" />
             <TextView
-                android:id="@+id/arrRight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="&#8594;"
-                android:gravity="center"
-                android:layout_marginTop="-3dp"
-                android:textSize="16dp" />
-
-            <TextView
-                android:id="@+id/endTime"
+                android:id="@+id/brac2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text="14:00"
+                android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16dp" />
+                android:text=")"
+                android:textSize="14dp" />
+
 
         </LinearLayout>
 
@@ -116,11 +116,11 @@
             android:id="@+id/givenDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
             android:layout_below="@+id/line2"
+            android:layout_marginLeft="12dp"
             android:text="21 Feb, 2022"
-            android:textSize="10dp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="14dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"

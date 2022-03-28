@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
@@ -52,6 +53,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -76,6 +78,14 @@ import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -89,6 +99,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import dev.b3nedikt.restring.Restring;
 
@@ -103,6 +114,8 @@ public class Explore extends AppCompatActivity implements OnMapReadyCallback, ad
     private static final int REQUEST_CODE = 101;
     FusedLocationProviderClient fusedLocationProviderClient;
     Location currentLocation;
+    DatabaseReference databaseReference;
+    FirebaseDatabase firebaseDatabase;
 
     RecyclerView phoneRecycler2;
     RecyclerView.Adapter adapter;
@@ -118,6 +131,9 @@ public class Explore extends AppCompatActivity implements OnMapReadyCallback, ad
 
     private ArrayList<LatLng> locationArrayList;
 
+    Renter renter;
+    List<Renter> renterList= new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,6 +141,33 @@ public class Explore extends AppCompatActivity implements OnMapReadyCallback, ad
         setContentView(R.layout.activity_explore);
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = fAuth.getInstance().getCurrentUser();
+        if(user == null) {
+            Intent intent = new Intent(getApplicationContext(), SendOTPActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+        firebaseDatabase= FirebaseDatabase.getInstance("https://parkin-e5c4e-default-rtdb.firebaseio.com/");
+        databaseReference=firebaseDatabase.getReference().child("renters");
+
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                collectRenters((Map<String,Object>) dataSnapshot.getValue());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
 
         checkMyPermission();
 
@@ -211,8 +254,8 @@ public class Explore extends AppCompatActivity implements OnMapReadyCallback, ad
         current.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast toast = Toast.makeText(Explore.this, veh, Toast.LENGTH_SHORT);
-                toast.show();
+                LatLng latLng12 = new LatLng(19.018950, 72.863543);
+                mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng12, 15));
             }
         });
 
@@ -221,7 +264,6 @@ public class Explore extends AppCompatActivity implements OnMapReadyCallback, ad
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                mGoogleMap.clear();
                 String location = searchView.getQuery().toString();
                 List<Address> addressList = null;
                 if (location != null || !location.equals("")) {
@@ -286,6 +328,21 @@ public class Explore extends AppCompatActivity implements OnMapReadyCallback, ad
         });
     }
 
+    private void collectRenters(Map<String, Object> renters) {
+        ArrayList<String> names = new ArrayList<>();
+
+        //iterate through each user, ignoring their UID
+        for (Map.Entry<String, Object> entry : renters.entrySet()){
+
+            //Get user map
+            Map singleUser = (Map) entry.getValue();
+            //Get phone field and append to list
+            names.add((String) singleUser.get("personalInfo"));
+        }
+
+        System.out.println(names.toString());
+    }
+
     public void statusCheck() {
         final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -331,10 +388,10 @@ public class Explore extends AppCompatActivity implements OnMapReadyCallback, ad
 
         ArrayList<phonehelper> phonelocations = new ArrayList<>();
         phonelocations.add(new phonehelper(gradient1, R.drawable.common_full_open_on_phone, "VSIT college", "30", "Charging Unavailable",getText(R.string.vsit).toString()));
-        phonelocations.add(new phonehelper(gradient4, R.drawable.common_full_open_on_phone, "Matunga Station Parking", "40", "Charging Unavailable", getText(R.string.matunga).toString()));
+        phonelocations.add(new phonehelper(gradient4, R.drawable.common_full_open_on_phone, "Matunga Parking", "40", "Charging Unavailable", getText(R.string.matunga).toString()));
         phonelocations.add(new phonehelper(gradient2, R.drawable.common_full_open_on_phone, "Kohinoor Square", "30", "Charging Available", getText(R.string.kohinoor).toString()));
         phonelocations.add(new phonehelper(gradient4, R.drawable.common_full_open_on_phone, "Sion Hospital","50", "Charging Available", getText(R.string.sion).toString()));
-        phonelocations.add(new phonehelper(gradient2, R.drawable.common_full_open_on_phone, "Mcgm Parking Sewri", "35", "Charging Available" , getText(R.string.mcgm).toString()));
+        phonelocations.add(new phonehelper(gradient2, R.drawable.common_full_open_on_phone, "Mcgm Parking", "35", "Charging Available" , getText(R.string.mcgm).toString()));
 
 
         adapter = new adapterphone(phonelocations, this);
@@ -344,7 +401,6 @@ public class Explore extends AppCompatActivity implements OnMapReadyCallback, ad
     }
 
     public void onphoneListClick(int clickItemIndex) {
-
 
     }
 
